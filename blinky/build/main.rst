@@ -55,7 +55,7 @@
                                      55 	.area GSINIT
                                      56 	.area GSFINAL
                                      57 	.area GSINIT
-      008007 CD 80 54         [ 4]   58 	call	___sdcc_external_startup
+      008007 CD 80 91         [ 4]   58 	call	___sdcc_external_startup
       00800A 4D               [ 1]   59 	tnz	a
       00800B 27 03            [ 1]   60 	jreq	__sdcc_init_data
       00800D CC 80 04         [ 2]   61 	jp	__sdcc_program_startup
@@ -104,7 +104,7 @@
                            000000   104 	C$main.c$8$1_0$7 ==.
                                     105 ;	./main.c: 8: setup_led();
                                     106 ; genCall
-      00802D CD 00 00         [ 4]  107 	call	_setup_led
+      00802D CD 80 54         [ 4]  107 	call	_setup_led
                                     108 ; genLabel
       008030                        109 00105$:
                            000003   110 	C$main.c$12$3_0$9 ==.
@@ -128,11 +128,11 @@
                            000014   128 	C$main.c$14$4_0$10 ==.
                                     129 ;	./main.c: 14: set_blue_low();
                                     130 ; genCall
-      008041 CD 00 00         [ 4]  131 	call	_set_blue_low
+      008041 CD 80 88         [ 4]  131 	call	_set_blue_low
                            000017   132 	C$main.c$15$4_0$10 ==.
                                     133 ;	./main.c: 15: set_green_low();
                                     134 ; genCall
-      008044 CD 00 00         [ 4]  135 	call	_set_green_low
+      008044 CD 80 76         [ 4]  135 	call	_set_green_low
                                     136 ; genGoto
       008047 CC 80 30         [ 2]  137 	jp	00105$
                                     138 ; genLabel
@@ -140,11 +140,11 @@
                            00001D   140 	C$main.c$18$4_0$11 ==.
                                     141 ;	./main.c: 18: set_blue_high();
                                     142 ; genCall
-      00804A CD 00 00         [ 4]  143 	call	_set_blue_high
+      00804A CD 80 7F         [ 4]  143 	call	_set_blue_high
                            000020   144 	C$main.c$19$4_0$11 ==.
                                     145 ;	./main.c: 19: set_green_high();
                                     146 ; genCall
-      00804D CD 00 00         [ 4]  147 	call	_set_green_high
+      00804D CD 80 6D         [ 4]  147 	call	_set_green_high
                                     148 ; genGoto
       008050 CC 80 30         [ 2]  149 	jp	00105$
                                     150 ; genLabel

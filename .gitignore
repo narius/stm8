@@ -1,10 +1,2 @@
 
-blinky/build/main.adb
-blinky/build/main.asm
-blinky/build/main.cdb
-blinky/build/main.ihx
-blinky/build/main.lst
-blinky/build/main.map
-blinky/build/main.rel
-blinky/build/main.rst
-blinky/build/main.sym
+blinky/*

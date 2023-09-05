@@ -8,11 +8,6 @@ Area                                    Addr        Size        Decimal Bytes (A
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
      00000000  .__.ABS.                           _startup
-     00000000  _set_blue_high                  
-     00000000  _set_blue_low                   
-     00000000  _set_green_high                 
-     00000000  _set_green_low                  
-     00000000  _setup_led                      
      00000000  l_CABS                          
      00000000  l_CONST                         
      00000000  l_DABS                          
@@ -30,13 +25,14 @@ Area                                    Addr        Size        Decimal Bytes (A
      00000003  l_GSFINAL                       
      00000007  l_HOME                          
      00000023  l_GSINIT                        
-     00000029  l_CODE                          
+     00000066  l_CODE                          
      00008000  s_HOME                          
      00008007  s_GSINIT                        
      0000802A  s_GSFINAL                       
      0000802D  s_CODE                          
      0000802D  s_CONST                         
      0000802D  s_INITIALIZER                   
+
 ASxxxx Linker V03.00/V05.40 + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
@@ -98,7 +94,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CODE                                0000802D    00000029 =          41. bytes (REL,CON)
+CODE                                0000802D    00000066 =         102. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -130,13 +126,80 @@ CODE                                0000802D    00000029 =          41. bytes (R
      00008053  A$main$157                         main
      00008053  C$main.c$24$2_0$7                  main
      00008053  XG$main$0$0                        main
-     00008054  ___sdcc_external_startup           _startup
-
+     00008054  A$led$66                           led
+     00008054  C$led.c$3$0_0$2                    led
+     00008054  C$led.c$4$1_0$2                    led
+     00008054  G$setup_led$0$0                    led
+     00008054  _setup_led                         led
+     00008058  A$led$70                           led
+     00008058  C$led.c$5$1_0$2                    led
+     0000805C  A$led$74                           led
+     0000805C  C$led.c$7$1_0$2                    led
+     00008060  A$led$78                           led
+     00008060  C$led.c$8$1_0$2                    led
+     00008064  A$led$82                           led
+     00008064  C$led.c$9$1_0$2                    led
+     00008068  A$led$86                           led
+     00008068  C$led.c$10$1_0$2                   led
+     0000806C  A$led$94                           led
+     0000806C  C$led.c$11$1_0$2                   led
+     0000806C  XG$setup_led$0$0                   led
+     0000806D  A$led$108                          led
+     0000806D  C$led.c$13$1_0$4                   led
+     0000806D  C$led.c$14$1_0$4                   led
+     0000806D  G$set_green_high$0$0               led
 ASxxxx Linker V03.00/V05.40 + sdld,  page 7.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CODE                                0000802D    00000066 =         102. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000806D  _set_green_high                    led
+     00008070  A$led$110                          led
+     00008072  A$led$112                          led
+     00008075  A$led$120                          led
+     00008075  C$led.c$15$1_0$4                   led
+     00008075  XG$set_green_high$0$0              led
+     00008076  A$led$134                          led
+     00008076  C$led.c$17$1_0$6                   led
+     00008076  C$led.c$18$1_0$6                   led
+     00008076  G$set_green_low$0$0                led
+     00008076  _set_green_low                     led
+     00008079  A$led$136                          led
+     0000807B  A$led$138                          led
+     0000807E  A$led$146                          led
+     0000807E  C$led.c$19$1_0$6                   led
+     0000807E  XG$set_green_low$0$0               led
+     0000807F  A$led$160                          led
+     0000807F  C$led.c$21$1_0$8                   led
+     0000807F  C$led.c$22$1_0$8                   led
+     0000807F  G$set_blue_high$0$0                led
+     0000807F  _set_blue_high                     led
+     00008082  A$led$162                          led
+     00008084  A$led$164                          led
+     00008087  A$led$172                          led
+     00008087  C$led.c$23$1_0$8                   led
+     00008087  XG$set_blue_high$0$0               led
+     00008088  A$led$186                          led
+     00008088  C$led.c$25$1_0$10                  led
+     00008088  C$led.c$26$1_0$10                  led
+     00008088  G$set_blue_low$0$0                 led
+     00008088  _set_blue_low                      led
+     0000808B  A$led$188                          led
+     0000808D  A$led$190                          led
+     00008090  A$led$198                          led
+     00008090  C$led.c$27$1_0$10                  led
+     00008090  XG$set_blue_low$0$0                led
+     00008091  ___sdcc_external_startup           _startup
+ASxxxx Linker V03.00/V05.40 + sdld,  page 8.
 
 Files Linked                              [ module(s) ]
 
 ./build/main.rel                          [ main ]
+./build/led.rel                           [ led ]
 
 
 Libraries Linked                          [ object file ]
@@ -144,7 +207,7 @@ Libraries Linked                          [ object file ]
 /opt/homebrew/bin/../share/sdcc/lib/stm8/stm8.lib
                                           [ _startup.rel ]
 
-ASxxxx Linker V03.00/V05.40 + sdld,  page 8.
+ASxxxx Linker V03.00/V05.40 + sdld,  page 9.
 
 User Base Address Definitions
 
@@ -152,12 +215,3 @@ HOME = 0x8000
 DATA = 0x0001
 
 
-?ASlink-Warning-Undefined Global '_set_green_low' referenced by module 'main'
-
-?ASlink-Warning-Undefined Global '_set_green_high' referenced by module 'main'
-
-?ASlink-Warning-Undefined Global '_set_blue_low' referenced by module 'main'
-
-?ASlink-Warning-Undefined Global '_setup_led' referenced by module 'main'
-
-?ASlink-Warning-Undefined Global '_set_blue_high' referenced by module 'main'
