@@ -8,6 +8,11 @@ Area                                    Addr        Size        Decimal Bytes (A
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
      00000000  .__.ABS.                           _startup
+     00000000  _set_blue_high                  
+     00000000  _set_blue_low                   
+     00000000  _set_green_high                 
+     00000000  _set_green_low                  
+     00000000  _setup_led                      
      00000000  l_CABS                          
      00000000  l_CONST                         
      00000000  l_DABS                          
@@ -25,14 +30,13 @@ Area                                    Addr        Size        Decimal Bytes (A
      00000003  l_GSFINAL                       
      00000007  l_HOME                          
      00000023  l_GSINIT                        
-     00000089  l_CODE                          
+     00000029  l_CODE                          
      00008000  s_HOME                          
      00008007  s_GSINIT                        
      0000802A  s_GSFINAL                       
      0000802D  s_CODE                          
      0000802D  s_CONST                         
      0000802D  s_INITIALIZER                   
-
 ASxxxx Linker V03.00/V05.40 + sdld,  page 2.
 Hexadecimal  [32-Bits]
 
@@ -51,8 +55,8 @@ HOME                                00008000    00000007 =           7. bytes (R
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00008000  A$main$46                          main
-     00008004  A$main$84                          main
+     00008000  A$main$50                          main
+     00008004  A$main$88                          main
 
 ASxxxx Linker V03.00/V05.40 + sdld,  page 4.
 Hexadecimal  [32-Bits]
@@ -63,21 +67,21 @@ GSINIT                              00008007    00000023 =          35. bytes (R
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00008007  A$main$54                          main
-     0000800A  A$main$55                          main
-     0000800B  A$main$56                          main
-     0000800D  A$main$57                          main
-     00008010  A$main$60                          main
-     00008013  A$main$61                          main
-     00008015  A$main$63                          main
-     00008019  A$main$64                          main
-     0000801A  A$main$65                          main
-     0000801C  A$main$67                          main
-     0000801F  A$main$68                          main
-     00008021  A$main$70                          main
-     00008024  A$main$71                          main
-     00008027  A$main$72                          main
-     00008028  A$main$73                          main
+     00008007  A$main$58                          main
+     0000800A  A$main$59                          main
+     0000800B  A$main$60                          main
+     0000800D  A$main$61                          main
+     00008010  A$main$64                          main
+     00008013  A$main$65                          main
+     00008015  A$main$67                          main
+     00008019  A$main$68                          main
+     0000801A  A$main$69                          main
+     0000801C  A$main$71                          main
+     0000801F  A$main$72                          main
+     00008021  A$main$74                          main
+     00008024  A$main$75                          main
+     00008027  A$main$76                          main
+     00008028  A$main$77                          main
 ASxxxx Linker V03.00/V05.40 + sdld,  page 5.
 Hexadecimal  [32-Bits]
 
@@ -87,108 +91,48 @@ GSFINAL                             0000802A    00000003 =           3. bytes (R
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     0000802A  A$main$77                          main
+     0000802A  A$main$81                          main
 
 ASxxxx Linker V03.00/V05.40 + sdld,  page 6.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CODE                                0000802D    00000089 =         137. bytes (REL,CON)
+CODE                                0000802D    00000029 =          41. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     0000802D  A$main$100                         main
-     0000802D  C$main.c$20$0_0$2                  main
-     0000802D  G$clock$0$0                        main
-     0000802D  _clock                             main
-     0000802F  A$main$104                         main
-     0000802F  C$main.c$22$1_0$2                  main
-     00008032  A$main$105                         main
-     00008033  A$main$109                         main
-     00008033  C$main.c$23$1_0$2                  main
-     00008036  A$main$114                         main
-     00008036  C$main.c$24$1_0$2                  main
-     00008038  A$main$116                         main
-     0000803A  A$main$119                         main
-     0000803C  A$main$121                         main
-     0000803E  A$main$122                         main
-     0000803F  A$main$123                         main
-     00008040  A$main$124                         main
-     00008042  A$main$126                         main
-     00008043  A$main$132                         main
-     00008045  A$main$135                         main
-     00008045  C$main.c$25$1_0$2                  main
-     00008045  XG$clock$0$0                       main
-     00008046  A$main$149                         main
-     00008046  C$main.c$27$1_0$4                  main
-     00008046  C$main.c$29$1_0$4                  main
-     00008046  G$main$0$0                         main
-     00008046  _main                              main
-     0000804A  A$main$153                         main
-     0000804A  C$main.c$30$1_0$4                  main
-     0000804D  A$main$155                         main
-     0000804F  A$main$157                         main
-     00008052  A$main$161                         main
-     00008052  C$main.c$34$1_0$4                  main
-     00008056  A$main$165                         main
-     00008056  C$main.c$35$1_0$4                  main
-     0000805A  A$main$169                         main
-     0000805A  C$main.c$37$1_0$4                  main
-     0000805E  A$main$173                         main
-     0000805E  C$main.c$40$1_0$4                  main
-     00008062  A$main$177                         main
-     00008062  C$main.c$41$1_0$4                  main
-     00008066  A$main$181                         main
-     00008066  C$main.c$43$1_0$4                  main
-     0000806A  A$main$185                         main
-     0000806A  C$main.c$44$1_0$4                  main
-     0000806E  A$main$191                         main
-     0000806E  C$main.c$48$3_0$6                  main
-     00008071  A$main$193                         main
-     00008073  A$main$195                         main
-     00008076  A$main$199                         main
+     0000802D  A$main$107                         main
+     0000802D  C$main.c$5$0_0$7                   main
+     0000802D  C$main.c$8$1_0$7                   main
+     0000802D  G$main$0$0                         main
+     0000802D  _main                              main
+     00008030  A$main$113                         main
+     00008030  C$main.c$12$3_0$9                  main
+     00008033  A$main$116                         main
+     00008034  A$main$118                         main
+     00008036  A$main$119                         main
+     00008037  A$main$120                         main
+     00008038  A$main$122                         main
+     00008039  A$main$123                         main
+     0000803C  A$main$124                         main
+     0000803E  A$main$125                         main
+     00008041  A$main$131                         main
+     00008041  C$main.c$14$4_0$10                 main
+     00008044  A$main$135                         main
+     00008044  C$main.c$15$4_0$10                 main
+     00008047  A$main$137                         main
+     0000804A  A$main$143                         main
+     0000804A  C$main.c$18$4_0$11                 main
+     0000804D  A$main$147                         main
+     0000804D  C$main.c$19$4_0$11                 main
+     00008050  A$main$149                         main
+     00008053  A$main$157                         main
+     00008053  C$main.c$24$2_0$7                  main
+     00008053  XG$main$0$0                        main
+     00008054  ___sdcc_external_startup           _startup
+
 ASxxxx Linker V03.00/V05.40 + sdld,  page 7.
-Hexadecimal  [32-Bits]
-
-Area                                    Addr        Size        Decimal Bytes (Attributes)
---------------------------------        ----        ----        ------- ----- ------------
-CODE                                0000802D    00000089 =         137. bytes (REL,CON)
-
-      Value  Global                              Global Defined In Module
-      -----  --------------------------------   ------------------------
-     00008076  C$main.c$49$3_0$6                  main
-     00008079  A$main$201                         main
-     0000807D  A$main$202                         main
-     0000807E  A$main$205                         main
-     00008082  A$main$206                         main
-     00008084  A$main$207                         main
-     00008087  A$main$213                         main
-     00008087  C$main.c$50$3_0$6                  main
-     0000808A  A$main$215                         main
-     0000808C  A$main$217                         main
-     0000808F  A$main$223                         main
-     0000808F  C$main.c$51$3_0$6                  main
-     00008092  A$main$225                         main
-     00008094  A$main$227                         main
-     00008097  A$main$231                         main
-     00008097  C$main.c$52$3_0$6                  main
-     0000809A  A$main$233                         main
-     0000809E  A$main$234                         main
-     0000809F  A$main$237                         main
-     000080A3  A$main$238                         main
-     000080A5  A$main$239                         main
-     000080A8  A$main$245                         main
-     000080A8  C$main.c$53$3_0$6                  main
-     000080AB  A$main$247                         main
-     000080AD  A$main$249                         main
-     000080B0  A$main$251                         main
-     000080B3  A$main$259                         main
-     000080B3  C$main.c$55$2_0$4                  main
-     000080B3  XG$main$0$0                        main
-     000080B4  ___sdcc_external_startup           _startup
-
-ASxxxx Linker V03.00/V05.40 + sdld,  page 8.
 
 Files Linked                              [ module(s) ]
 
@@ -200,7 +144,7 @@ Libraries Linked                          [ object file ]
 /opt/homebrew/bin/../share/sdcc/lib/stm8/stm8.lib
                                           [ _startup.rel ]
 
-ASxxxx Linker V03.00/V05.40 + sdld,  page 9.
+ASxxxx Linker V03.00/V05.40 + sdld,  page 8.
 
 User Base Address Definitions
 
@@ -208,3 +152,12 @@ HOME = 0x8000
 DATA = 0x0001
 
 
+?ASlink-Warning-Undefined Global '_set_green_low' referenced by module 'main'
+
+?ASlink-Warning-Undefined Global '_set_green_high' referenced by module 'main'
+
+?ASlink-Warning-Undefined Global '_set_blue_low' referenced by module 'main'
+
+?ASlink-Warning-Undefined Global '_setup_led' referenced by module 'main'
+
+?ASlink-Warning-Undefined Global '_set_blue_high' referenced by module 'main'

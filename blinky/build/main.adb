@@ -1,9 +1,8 @@
 M:main
-F:G$clock$0_0$0({2}DF,SI:U),C,0,0,0,0,0
-S:Lmain.clock$h$1_0$2({1}SC:U),R,0,0,[xh]
-S:Lmain.clock$l$1_0$2({1}SC:U),R,0,0,[a]
-S:Lmain.clock$sloc0$0_1$0({2}SI:U),B,1,-4
-S:Lmain.clock$sloc1$0_1$0({2}SI:U),B,1,-2
 F:G$main$0_0$0({2}DF,SV:S),C,0,0,0,0,0
-S:G$clock$0_0$0({2}DF,SI:U),C,0,0
+S:G$setup_led$0_0$0({2}DF,SV:S),C,0,0
+S:G$set_green_high$0_0$0({2}DF,SV:S),C,0,0
+S:G$set_green_low$0_0$0({2}DF,SV:S),C,0,0
+S:G$set_blue_high$0_0$0({2}DF,SV:S),C,0,0
+S:G$set_blue_low$0_0$0({2}DF,SV:S),C,0,0
 S:G$main$0_0$0({2}DF,SV:S),C,0,0

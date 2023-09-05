@@ -25,11 +25,13 @@ CFLAGS       = -mstm8 --out-fmt-ihx --all-callee-saves --debug --verbose --stack
 
 SOURCE       =main
 SOURCE_DIR   =.
+REPO_ROOT = ..
 OUTPUT_DIR   =$(SOURCE_DIR)/build
 #StdPeriph    =$(SOURCE_DIR)/STM8S_StdPeriph_Driver
 
 # Add include paths here
 INCLUDEPATH  =-I$(SOURCE_DIR)/
+INCLUDEPATH =-I$(REPO_ROOT)/STM8LDISCOVERY/include
 #INCLUDEPATH +=-I$(StdPeriph)/inc
 
 def: compile flash
@@ -39,14 +41,14 @@ all: clean compile_obj compile
 compile:
 	mkdir -p $(OUTPUT_DIR)
 	$(SDCC) $(CFLAGS) $(INCLUDEPATH) -D $(DEVICE) -o $(OUTPUT_DIR)/ $(SOURCE_DIR)/$(SOURCE).c --out-fmt-ihx --all-callee-saves --debug --verbose --stack-auto --fverbose-asm  --float-reent --no-peep
-#	$(OUTPUT_DIR)/stm8s_gpio.rel
+	$(OUTPUT_DIR)/led.rel
 #	$(OUTPUT_DIR)/stm8s_clk.rel \
 #	$(OUTPUT_DIR)/stm8s_tim2.rel \
 	
 
 compile_obj:
 	mkdir -p $(OUTPUT_DIR)
-#	$(SDCC) $(CFLAGS) $(INCLUDEPATH) -D $(DEVICE) -o $(OUTPUT_DIR)/ -c $(StdPeriph)/src/stm8s_gpio.c
+	$(SDCC) $(CFLAGS) $(INCLUDEPATH) -D $(DEVICE) -o $(OUTPUT_DIR)/ -c $(REPO_ROOT)/STM8LDISCOVERY/src/led.c
 #	$(SDCC) $(CFLAGS) $(INCLUDEPATH) -D $(DEVICE) -o $(OUTPUT_DIR)/ -c $(StdPeriph)/src/stm8s_clk.c
 #	$(SDCC) $(CFLAGS) $(INCLUDEPATH) -D $(DEVICE) -o $(OUTPUT_DIR)/ -c $(StdPeriph)/src/stm8s_tim2.c
 
@@ -55,6 +57,3 @@ clean:
 
 flash:
 	stm8flash -c stlinkv2 -p $(MCU) -w $(OUTPUT_DIR)/$(SOURCE).ihx
-
-openocd:
-	openocd -f interface/stlink.cfg -f target/stm8s003.cfg -c "init" -c "reset halt"
