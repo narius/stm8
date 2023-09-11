@@ -1,7 +1,6 @@
 #include <stdint.h>
-#include "registers.h"
+//#include "registers.h"
 #include "led.h"
-
 void main(void)
 {
 	// Configure pins
@@ -11,12 +10,10 @@ void main(void)
 	{
 		if ((PC2_IDR & 0b00000010) != 0b00000010)
 		{
-			set_blue_low();
-			set_green_low();
+			set_bit_low(&LED_GREENP.reg, LED_GREENP.mask);
 		}
 		else{
-			set_blue_high();
-			set_green_high();
+			set_bit_high(&LED_GREENP.reg, LED_GREENP.mask);
 		}
 
 

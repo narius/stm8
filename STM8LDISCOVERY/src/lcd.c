@@ -1,0 +1,3 @@
+// PC4 = I2C1_SMB
+// PC1 = I2C1_SCL
+// PC0 = I2C1_SDA

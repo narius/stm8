@@ -39,19 +39,19 @@ def: compile flash
 
 all: clean compile_obj compile flash
 
-compile:
+compile: 
 	mkdir -p $(OUTPUT_DIR)
 	$(SDCC) $(CFLAGS) $(INCLUDEPATH) -D $(DEVICE) -o $(OUTPUT_DIR)/ $(SOURCE_DIR)/$(SOURCE).c --out-fmt-ihx --all-callee-saves --debug --verbose --stack-auto --fverbose-asm  --float-reent --no-peep \
-	$(OUTPUT_DIR)/led.rel
-#	$(OUTPUT_DIR)/stm8s_clk.rel \
-#	$(OUTPUT_DIR)/stm8s_tim2.rel \
+	$(OUTPUT_DIR)/led.rel \
+	$(OUTPUT_DIR)/lcd.rel \
+	$(OUTPUT_DIR)/registers.rel \
 	
 
 compile_obj:
 	mkdir -p $(OUTPUT_DIR)
 	$(SDCC) $(CFLAGS) $(INCLUDEPATH) -D $(DEVICE) -o $(OUTPUT_DIR)/ -c --verbose $(STM8LDISCOVERY)/src/led.c
-#	$(SDCC) $(CFLAGS) $(INCLUDEPATH) -D $(DEVICE) -o $(OUTPUT_DIR)/ -c $(StdPeriph)/src/stm8s_clk.c
-#	$(SDCC) $(CFLAGS) $(INCLUDEPATH) -D $(DEVICE) -o $(OUTPUT_DIR)/ -c $(StdPeriph)/src/stm8s_tim2.c
+	$(SDCC) $(CFLAGS) $(INCLUDEPATH) -D $(DEVICE) -o $(OUTPUT_DIR)/ -c --verbose $(STM8LDISCOVERY)/src/lcd.c
+	$(SDCC) $(CFLAGS) $(INCLUDEPATH) -D $(DEVICE) -o $(OUTPUT_DIR)/ -c --verbose $(STM8LDISCOVERY)/src/registers.c
 
 clean:
 	rm -Rrf $(OUTPUT_DIR)
