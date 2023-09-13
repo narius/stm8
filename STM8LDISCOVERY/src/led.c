@@ -1,8 +1,13 @@
 #include "led.h"
+
+
 void setup_led(void)
 {
-    LED_GREENP.mask=(1<<7);
-    LED_GREENP.reg=&PC_ODR;
+    /*LED_BLUE.mask=1<<7;
+LED_BLUE.reg= &PC_ODR;
+LED_GREEN.mask=1<<7;
+LED_GREEN.reg=&PE_ODR;*/
+
     PE_DDR = 0x80;
     PE_CR1 = 0x80;
 

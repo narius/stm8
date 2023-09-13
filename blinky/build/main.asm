@@ -9,10 +9,6 @@
 ; Public variables in this module
 ;--------------------------------------------------------
 	.globl _main
-	.globl _set_blue_low
-	.globl _set_blue_high
-	.globl _set_green_low
-	.globl _set_green_high
 	.globl _setup_led
 ;--------------------------------------------------------
 ; ram data
@@ -22,6 +18,12 @@
 ; ram data
 ;--------------------------------------------------------
 	.area INITIALIZED
+Fmain$LED_BLUE$0_0$0==.
+_LED_BLUE:
+	.ds 3
+Fmain$LED_GREEN$0_0$0==.
+_LED_GREEN:
+	.ds 3
 ;--------------------------------------------------------
 ; Stack segment in internal ram
 ;--------------------------------------------------------
@@ -92,23 +94,24 @@ __sdcc_program_startup:
 ;--------------------------------------------------------
 	.area CODE
 	G$main$0$0 ==.
-	C$main.c$5$0_0$7 ==.
-;	./main.c: 5: void main(void)
+	C$main.c$14$0_0$3 ==.
+;	./main.c: 14: void main(void)
 ; genLabel
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 ;	Register assignment might be sub-optimal.
-;	Stack space usage: 0 bytes.
+;	Stack space usage: 1 bytes.
 _main:
-	C$main.c$8$1_0$7 ==.
-;	./main.c: 8: setup_led();
+	push	a
+	C$main.c$17$1_0$3 ==.
+;	./main.c: 17: setup_led();
 ; genCall
 	call	_setup_led
 ; genLabel
 00105$:
-	C$main.c$12$3_0$9 ==.
-;	./main.c: 12: if ((PC2_IDR & 0b00000010) != 0b00000010)
+	C$main.c$21$3_0$5 ==.
+;	./main.c: 21: if ((PC2_IDR & 0b00000010) != 0b00000010)
 ; genPointerGet
 	ld	a, 0x500b
 ; genCast
@@ -125,37 +128,106 @@ _main:
 	jp	00102$
 00120$:
 ; skipping generated iCode
-	C$main.c$14$4_0$10 ==.
-;	./main.c: 14: set_blue_low();
-; genCall
-	call	_set_blue_low
-	C$main.c$15$4_0$10 ==.
-;	./main.c: 15: set_green_low();
-; genCall
-	call	_set_green_low
+	C$main.c$23$4_0$6 ==.
+;	./main.c: 23: bitclear(*(LED_BLUE.reg), LED_BLUE.mask);
+; skipping iCode since result will be rematerialized
+; genPointerGet
+	ldw	x, _LED_BLUE+1
+; skipping iCode since result will be rematerialized
+; genPointerGet
+	ldw	y, _LED_BLUE+1
+; genPointerGet
+	ld	a, (y)
+	ld	(0x01, sp), a
+; skipping iCode since result will be rematerialized
+; genPointerGet
+	ld	a, _LED_BLUE+0
+; genCpl
+	cpl	a
+; genAnd
+	and	a, (0x01, sp)
+; genPointerSet
+	ld	(x), a
+	C$main.c$24$4_0$6 ==.
+;	./main.c: 24: bitset(*(LED_GREEN.reg), LED_GREEN.mask);
+; skipping iCode since result will be rematerialized
+; genPointerGet
+	ldw	x, _LED_GREEN+1
+; skipping iCode since result will be rematerialized
+; genPointerGet
+	ldw	y, _LED_GREEN+1
+; genPointerGet
+	ld	a, (y)
+	ld	(0x01, sp), a
+; skipping iCode since result will be rematerialized
+; genPointerGet
+	ld	a, _LED_GREEN+0
+; genOr
+	or	a, (0x01, sp)
+; genPointerSet
+	ld	(x), a
 ; genGoto
 	jp	00105$
 ; genLabel
 00102$:
-	C$main.c$18$4_0$11 ==.
-;	./main.c: 18: set_blue_high();
-; genCall
-	call	_set_blue_high
-	C$main.c$19$4_0$11 ==.
-;	./main.c: 19: set_green_high();
-; genCall
-	call	_set_green_high
+	C$main.c$27$4_0$7 ==.
+;	./main.c: 27: bitclear(*(LED_GREEN.reg), LED_GREEN.mask);
+; skipping iCode since result will be rematerialized
+; genPointerGet
+	ldw	x, _LED_GREEN+1
+; skipping iCode since result will be rematerialized
+; genPointerGet
+	ldw	y, _LED_GREEN+1
+; genPointerGet
+	ld	a, (y)
+	ld	(0x01, sp), a
+; skipping iCode since result will be rematerialized
+; genPointerGet
+	ld	a, _LED_GREEN+0
+; genCpl
+	cpl	a
+; genAnd
+	and	a, (0x01, sp)
+; genPointerSet
+	ld	(x), a
+	C$main.c$28$4_0$7 ==.
+;	./main.c: 28: bitset(*(LED_BLUE.reg), LED_BLUE.mask);
+; skipping iCode since result will be rematerialized
+; genPointerGet
+	ldw	x, _LED_BLUE+1
+; skipping iCode since result will be rematerialized
+; genPointerGet
+	ldw	y, _LED_BLUE+1
+; genPointerGet
+	ld	a, (y)
+	ld	(0x01, sp), a
+; skipping iCode since result will be rematerialized
+; genPointerGet
+	ld	a, _LED_BLUE+0
+; genOr
+	or	a, (0x01, sp)
+; genPointerSet
+	ld	(x), a
 ; genGoto
 	jp	00105$
 ; genLabel
 00107$:
-	C$main.c$24$2_0$7 ==.
-;	./main.c: 24: }
+	C$main.c$33$2_0$3 ==.
+;	./main.c: 33: }
 ; genEndFunction
-	C$main.c$24$2_0$7 ==.
+	pop	a
+	C$main.c$33$2_0$3 ==.
 	XG$main$0$0 ==.
 	ret
 	.area CODE
 	.area CONST
 	.area INITIALIZER
+Fmain$__xinit_LED_BLUE$0_0$0 == .
+__xinit__LED_BLUE:
+	.db #0x80	; 128
+	.dw #0x500a
+Fmain$__xinit_LED_GREEN$0_0$0 == .
+__xinit__LED_GREEN:
+	.db #0x80	; 128
+	.dw #0x5014
 	.area CABS (ABS)

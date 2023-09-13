@@ -1,8 +1,11 @@
 M:main
-F:G$main$0_0$0({2}DF,SV:S),C,0,0,0,0,0
+F:G$main$0_0$0({2}DF,SV:S),C,0,-3,0,0,0
+S:Lmain.main$sloc0$0_1$0({1}SC:U),B,1,-1
+S:Lmain.main$sloc1$0_1$0({1}SC:U),B,1,-1
+S:Lmain.main$sloc2$0_1$0({1}SC:U),B,1,-1
+S:Lmain.main$sloc3$0_1$0({1}SC:U),B,1,-1
+T:Fmain$struct_LED[({0}S:S$mask$0_0$0({1}SC:U),Z,0,0)({1}S:S$reg$0_0$0({2}DG,SC:U),Z,0,0)]
+S:Fmain$LED_BLUE$0_0$0({3}STstruct_LED:S),E,0,0
+S:Fmain$LED_GREEN$0_0$0({3}STstruct_LED:S),E,0,0
 S:G$setup_led$0_0$0({2}DF,SV:S),C,0,0
-S:G$set_green_high$0_0$0({2}DF,SV:S),C,0,0
-S:G$set_green_low$0_0$0({2}DF,SV:S),C,0,0
-S:G$set_blue_high$0_0$0({2}DF,SV:S),C,0,0
-S:G$set_blue_low$0_0$0({2}DF,SV:S),C,0,0
-S:G$main$0_0$0({2}DF,SV:S),C,0,0
+S:G$main$0_0$0({2}DF,SV:S),C,0,-3

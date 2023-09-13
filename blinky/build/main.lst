@@ -9,153 +9,225 @@
                                       9 ; Public variables in this module
                                      10 ;--------------------------------------------------------
                                      11 	.globl _main
-                                     12 	.globl _set_blue_low
-                                     13 	.globl _set_blue_high
-                                     14 	.globl _set_green_low
-                                     15 	.globl _set_green_high
-                                     16 	.globl _setup_led
+                                     12 	.globl _setup_led
+                                     13 ;--------------------------------------------------------
+                                     14 ; ram data
+                                     15 ;--------------------------------------------------------
+                                     16 	.area DATA
                                      17 ;--------------------------------------------------------
                                      18 ; ram data
                                      19 ;--------------------------------------------------------
-                                     20 	.area DATA
-                                     21 ;--------------------------------------------------------
-                                     22 ; ram data
-                                     23 ;--------------------------------------------------------
-                                     24 	.area INITIALIZED
-                                     25 ;--------------------------------------------------------
-                                     26 ; Stack segment in internal ram
+                                     20 	.area INITIALIZED
+                           000000    21 Fmain$LED_BLUE$0_0$0==.
+      000000                         22 _LED_BLUE:
+      000000                         23 	.ds 3
+                           000003    24 Fmain$LED_GREEN$0_0$0==.
+      000003                         25 _LED_GREEN:
+      000003                         26 	.ds 3
                                      27 ;--------------------------------------------------------
-                                     28 	.area SSEG
-      000000                         29 __start__stack:
-      000000                         30 	.ds	1
-                                     31 
-                                     32 ;--------------------------------------------------------
-                                     33 ; absolute external ram data
+                                     28 ; Stack segment in internal ram
+                                     29 ;--------------------------------------------------------
+                                     30 	.area SSEG
+      000000                         31 __start__stack:
+      000000                         32 	.ds	1
+                                     33 
                                      34 ;--------------------------------------------------------
-                                     35 	.area DABS (ABS)
-                                     36 
-                                     37 ; default segment ordering for linker
-                                     38 	.area HOME
-                                     39 	.area GSINIT
-                                     40 	.area GSFINAL
-                                     41 	.area CONST
-                                     42 	.area INITIALIZER
-                                     43 	.area CODE
-                                     44 
-                                     45 ;--------------------------------------------------------
-                                     46 ; interrupt vector
+                                     35 ; absolute external ram data
+                                     36 ;--------------------------------------------------------
+                                     37 	.area DABS (ABS)
+                                     38 
+                                     39 ; default segment ordering for linker
+                                     40 	.area HOME
+                                     41 	.area GSINIT
+                                     42 	.area GSFINAL
+                                     43 	.area CONST
+                                     44 	.area INITIALIZER
+                                     45 	.area CODE
+                                     46 
                                      47 ;--------------------------------------------------------
-                                     48 	.area HOME
-      000000                         49 __interrupt_vect:
-      000000 82v00u00u00             50 	int s_GSINIT ; reset
-                                     51 ;--------------------------------------------------------
-                                     52 ; global & static initialisations
+                                     48 ; interrupt vector
+                                     49 ;--------------------------------------------------------
+                                     50 	.area HOME
+      000000                         51 __interrupt_vect:
+      000000 82v00u00u00             52 	int s_GSINIT ; reset
                                      53 ;--------------------------------------------------------
-                                     54 	.area HOME
-                                     55 	.area GSINIT
-                                     56 	.area GSFINAL
+                                     54 ; global & static initialisations
+                                     55 ;--------------------------------------------------------
+                                     56 	.area HOME
                                      57 	.area GSINIT
-      000000 CDr00r00         [ 4]   58 	call	___sdcc_external_startup
-      000003 4D               [ 1]   59 	tnz	a
-      000004 27 03            [ 1]   60 	jreq	__sdcc_init_data
-      000006 CCr00r04         [ 2]   61 	jp	__sdcc_program_startup
-      000009                         62 __sdcc_init_data:
-                                     63 ; stm8_genXINIT() start
-      000009 AEr00r00         [ 2]   64 	ldw x, #l_DATA
-      00000C 27 07            [ 1]   65 	jreq	00002$
-      00000E                         66 00001$:
-      00000E 72 4FuFFuFF      [ 1]   67 	clr (s_DATA - 1, x)
-      000012 5A               [ 2]   68 	decw x
-      000013 26 F9            [ 1]   69 	jrne	00001$
-      000015                         70 00002$:
-      000015 AEr00r00         [ 2]   71 	ldw	x, #l_INITIALIZER
-      000018 27 09            [ 1]   72 	jreq	00004$
-      00001A                         73 00003$:
-      00001A D6uFFuFF         [ 1]   74 	ld	a, (s_INITIALIZER - 1, x)
-      00001D D7uFFuFF         [ 1]   75 	ld	(s_INITIALIZED - 1, x), a
-      000020 5A               [ 2]   76 	decw	x
-      000021 26 F7            [ 1]   77 	jrne	00003$
-      000023                         78 00004$:
-                                     79 ; stm8_genXINIT() end
-                                     80 	.area GSFINAL
-      000000 CCr00r04         [ 2]   81 	jp	__sdcc_program_startup
-                                     82 ;--------------------------------------------------------
-                                     83 ; Home
+                                     58 	.area GSFINAL
+                                     59 	.area GSINIT
+      000000 CDr00r00         [ 4]   60 	call	___sdcc_external_startup
+      000003 4D               [ 1]   61 	tnz	a
+      000004 27 03            [ 1]   62 	jreq	__sdcc_init_data
+      000006 CCr00r04         [ 2]   63 	jp	__sdcc_program_startup
+      000009                         64 __sdcc_init_data:
+                                     65 ; stm8_genXINIT() start
+      000009 AEr00r00         [ 2]   66 	ldw x, #l_DATA
+      00000C 27 07            [ 1]   67 	jreq	00002$
+      00000E                         68 00001$:
+      00000E 72 4FuFFuFF      [ 1]   69 	clr (s_DATA - 1, x)
+      000012 5A               [ 2]   70 	decw x
+      000013 26 F9            [ 1]   71 	jrne	00001$
+      000015                         72 00002$:
+      000015 AEr00r00         [ 2]   73 	ldw	x, #l_INITIALIZER
+      000018 27 09            [ 1]   74 	jreq	00004$
+      00001A                         75 00003$:
+      00001A D6uFFuFF         [ 1]   76 	ld	a, (s_INITIALIZER - 1, x)
+      00001D D7uFFuFF         [ 1]   77 	ld	(s_INITIALIZED - 1, x), a
+      000020 5A               [ 2]   78 	decw	x
+      000021 26 F7            [ 1]   79 	jrne	00003$
+      000023                         80 00004$:
+                                     81 ; stm8_genXINIT() end
+                                     82 	.area GSFINAL
+      000000 CCr00r04         [ 2]   83 	jp	__sdcc_program_startup
                                      84 ;--------------------------------------------------------
-                                     85 	.area HOME
-                                     86 	.area HOME
-      000004                         87 __sdcc_program_startup:
-      000004 CCr00r00         [ 2]   88 	jp	_main
-                                     89 ;	return from main will return to caller
-                                     90 ;--------------------------------------------------------
-                                     91 ; code
+                                     85 ; Home
+                                     86 ;--------------------------------------------------------
+                                     87 	.area HOME
+                                     88 	.area HOME
+      000004                         89 __sdcc_program_startup:
+      000004 CCr00r00         [ 2]   90 	jp	_main
+                                     91 ;	return from main will return to caller
                                      92 ;--------------------------------------------------------
-                                     93 	.area CODE
-                           000000    94 	G$main$0$0 ==.
-                           000000    95 	C$main.c$5$0_0$7 ==.
-                                     96 ;	./main.c: 5: void main(void)
-                                     97 ; genLabel
-                                     98 ;	-----------------------------------------
-                                     99 ;	 function main
+                                     93 ; code
+                                     94 ;--------------------------------------------------------
+                                     95 	.area CODE
+                           000000    96 	G$main$0$0 ==.
+                           000000    97 	C$main.c$14$0_0$3 ==.
+                                     98 ;	./main.c: 14: void main(void)
+                                     99 ; genLabel
                                     100 ;	-----------------------------------------
-                                    101 ;	Register assignment might be sub-optimal.
-                                    102 ;	Stack space usage: 0 bytes.
-      000000                        103 _main:
-                           000000   104 	C$main.c$8$1_0$7 ==.
-                                    105 ;	./main.c: 8: setup_led();
-                                    106 ; genCall
-      000000 CDr00r00         [ 4]  107 	call	_setup_led
-                                    108 ; genLabel
-      000003                        109 00105$:
-                           000003   110 	C$main.c$12$3_0$9 ==.
-                                    111 ;	./main.c: 12: if ((PC2_IDR & 0b00000010) != 0b00000010)
-                                    112 ; genPointerGet
-      000003 C6 50 0B         [ 1]  113 	ld	a, 0x500b
-                                    114 ; genCast
-                                    115 ; genAssign
-      000006 5F               [ 1]  116 	clrw	x
-                                    117 ; genAnd
-      000007 A4 02            [ 1]  118 	and	a, #0x02
-      000009 97               [ 1]  119 	ld	xl, a
-      00000A 4F               [ 1]  120 	clr	a
-                                    121 ; genCmpEQorNE
-      00000B 95               [ 1]  122 	ld	xh, a
-      00000C A3 00 02         [ 2]  123 	cpw	x, #0x0002
-      00000F 26 03            [ 1]  124 	jrne	00120$
-      000011 CCr00r1D         [ 2]  125 	jp	00102$
-      000014                        126 00120$:
-                                    127 ; skipping generated iCode
-                           000014   128 	C$main.c$14$4_0$10 ==.
-                                    129 ;	./main.c: 14: set_blue_low();
-                                    130 ; genCall
-      000014 CDr00r00         [ 4]  131 	call	_set_blue_low
-                           000017   132 	C$main.c$15$4_0$10 ==.
-                                    133 ;	./main.c: 15: set_green_low();
-                                    134 ; genCall
-      000017 CDr00r00         [ 4]  135 	call	_set_green_low
-                                    136 ; genGoto
-      00001A CCr00r03         [ 2]  137 	jp	00105$
-                                    138 ; genLabel
-      00001D                        139 00102$:
-                           00001D   140 	C$main.c$18$4_0$11 ==.
-                                    141 ;	./main.c: 18: set_blue_high();
-                                    142 ; genCall
-      00001D CDr00r00         [ 4]  143 	call	_set_blue_high
-                           000020   144 	C$main.c$19$4_0$11 ==.
-                                    145 ;	./main.c: 19: set_green_high();
-                                    146 ; genCall
-      000020 CDr00r00         [ 4]  147 	call	_set_green_high
-                                    148 ; genGoto
-      000023 CCr00r03         [ 2]  149 	jp	00105$
-                                    150 ; genLabel
-      000026                        151 00107$:
-                           000026   152 	C$main.c$24$2_0$7 ==.
-                                    153 ;	./main.c: 24: }
-                                    154 ; genEndFunction
-                           000026   155 	C$main.c$24$2_0$7 ==.
-                           000026   156 	XG$main$0$0 ==.
-      000026 81               [ 4]  157 	ret
-                                    158 	.area CODE
-                                    159 	.area CONST
-                                    160 	.area INITIALIZER
-                                    161 	.area CABS (ABS)
+                                    101 ;	 function main
+                                    102 ;	-----------------------------------------
+                                    103 ;	Register assignment might be sub-optimal.
+                                    104 ;	Stack space usage: 1 bytes.
+      000000                        105 _main:
+      000000 88               [ 1]  106 	push	a
+                           000001   107 	C$main.c$17$1_0$3 ==.
+                                    108 ;	./main.c: 17: setup_led();
+                                    109 ; genCall
+      000001 CDr00r00         [ 4]  110 	call	_setup_led
+                                    111 ; genLabel
+      000004                        112 00105$:
+                           000004   113 	C$main.c$21$3_0$5 ==.
+                                    114 ;	./main.c: 21: if ((PC2_IDR & 0b00000010) != 0b00000010)
+                                    115 ; genPointerGet
+      000004 C6 50 0B         [ 1]  116 	ld	a, 0x500b
+                                    117 ; genCast
+                                    118 ; genAssign
+      000007 5F               [ 1]  119 	clrw	x
+                                    120 ; genAnd
+      000008 A4 02            [ 1]  121 	and	a, #0x02
+      00000A 97               [ 1]  122 	ld	xl, a
+      00000B 4F               [ 1]  123 	clr	a
+                                    124 ; genCmpEQorNE
+      00000C 95               [ 1]  125 	ld	xh, a
+      00000D A3 00 02         [ 2]  126 	cpw	x, #0x0002
+      000010 26 03            [ 1]  127 	jrne	00120$
+      000012 CCr00r3B         [ 2]  128 	jp	00102$
+      000015                        129 00120$:
+                                    130 ; skipping generated iCode
+                           000015   131 	C$main.c$23$4_0$6 ==.
+                                    132 ;	./main.c: 23: bitclear(*(LED_BLUE.reg), LED_BLUE.mask);
+                                    133 ; skipping iCode since result will be rematerialized
+                                    134 ; genPointerGet
+      000015 CEu00u01         [ 2]  135 	ldw	x, _LED_BLUE+1
+                                    136 ; skipping iCode since result will be rematerialized
+                                    137 ; genPointerGet
+      000018 90 CEu00u01      [ 2]  138 	ldw	y, _LED_BLUE+1
+                                    139 ; genPointerGet
+      00001C 90 F6            [ 1]  140 	ld	a, (y)
+      00001E 6B 01            [ 1]  141 	ld	(0x01, sp), a
+                                    142 ; skipping iCode since result will be rematerialized
+                                    143 ; genPointerGet
+      000020 C6u00u00         [ 1]  144 	ld	a, _LED_BLUE+0
+                                    145 ; genCpl
+      000023 43               [ 1]  146 	cpl	a
+                                    147 ; genAnd
+      000024 14 01            [ 1]  148 	and	a, (0x01, sp)
+                                    149 ; genPointerSet
+      000026 F7               [ 1]  150 	ld	(x), a
+                           000027   151 	C$main.c$24$4_0$6 ==.
+                                    152 ;	./main.c: 24: bitset(*(LED_GREEN.reg), LED_GREEN.mask);
+                                    153 ; skipping iCode since result will be rematerialized
+                                    154 ; genPointerGet
+      000027 CEu00u04         [ 2]  155 	ldw	x, _LED_GREEN+1
+                                    156 ; skipping iCode since result will be rematerialized
+                                    157 ; genPointerGet
+      00002A 90 CEu00u04      [ 2]  158 	ldw	y, _LED_GREEN+1
+                                    159 ; genPointerGet
+      00002E 90 F6            [ 1]  160 	ld	a, (y)
+      000030 6B 01            [ 1]  161 	ld	(0x01, sp), a
+                                    162 ; skipping iCode since result will be rematerialized
+                                    163 ; genPointerGet
+      000032 C6u00u03         [ 1]  164 	ld	a, _LED_GREEN+0
+                                    165 ; genOr
+      000035 1A 01            [ 1]  166 	or	a, (0x01, sp)
+                                    167 ; genPointerSet
+      000037 F7               [ 1]  168 	ld	(x), a
+                                    169 ; genGoto
+      000038 CCr00r04         [ 2]  170 	jp	00105$
+                                    171 ; genLabel
+      00003B                        172 00102$:
+                           00003B   173 	C$main.c$27$4_0$7 ==.
+                                    174 ;	./main.c: 27: bitclear(*(LED_GREEN.reg), LED_GREEN.mask);
+                                    175 ; skipping iCode since result will be rematerialized
+                                    176 ; genPointerGet
+      00003B CEu00u04         [ 2]  177 	ldw	x, _LED_GREEN+1
+                                    178 ; skipping iCode since result will be rematerialized
+                                    179 ; genPointerGet
+      00003E 90 CEu00u04      [ 2]  180 	ldw	y, _LED_GREEN+1
+                                    181 ; genPointerGet
+      000042 90 F6            [ 1]  182 	ld	a, (y)
+      000044 6B 01            [ 1]  183 	ld	(0x01, sp), a
+                                    184 ; skipping iCode since result will be rematerialized
+                                    185 ; genPointerGet
+      000046 C6u00u03         [ 1]  186 	ld	a, _LED_GREEN+0
+                                    187 ; genCpl
+      000049 43               [ 1]  188 	cpl	a
+                                    189 ; genAnd
+      00004A 14 01            [ 1]  190 	and	a, (0x01, sp)
+                                    191 ; genPointerSet
+      00004C F7               [ 1]  192 	ld	(x), a
+                           00004D   193 	C$main.c$28$4_0$7 ==.
+                                    194 ;	./main.c: 28: bitset(*(LED_BLUE.reg), LED_BLUE.mask);
+                                    195 ; skipping iCode since result will be rematerialized
+                                    196 ; genPointerGet
+      00004D CEu00u01         [ 2]  197 	ldw	x, _LED_BLUE+1
+                                    198 ; skipping iCode since result will be rematerialized
+                                    199 ; genPointerGet
+      000050 90 CEu00u01      [ 2]  200 	ldw	y, _LED_BLUE+1
+                                    201 ; genPointerGet
+      000054 90 F6            [ 1]  202 	ld	a, (y)
+      000056 6B 01            [ 1]  203 	ld	(0x01, sp), a
+                                    204 ; skipping iCode since result will be rematerialized
+                                    205 ; genPointerGet
+      000058 C6u00u00         [ 1]  206 	ld	a, _LED_BLUE+0
+                                    207 ; genOr
+      00005B 1A 01            [ 1]  208 	or	a, (0x01, sp)
+                                    209 ; genPointerSet
+      00005D F7               [ 1]  210 	ld	(x), a
+                                    211 ; genGoto
+      00005E CCr00r04         [ 2]  212 	jp	00105$
+                                    213 ; genLabel
+      000061                        214 00107$:
+                           000061   215 	C$main.c$33$2_0$3 ==.
+                                    216 ;	./main.c: 33: }
+                                    217 ; genEndFunction
+      000061 84               [ 1]  218 	pop	a
+                           000062   219 	C$main.c$33$2_0$3 ==.
+                           000062   220 	XG$main$0$0 ==.
+      000062 81               [ 4]  221 	ret
+                                    222 	.area CODE
+                                    223 	.area CONST
+                                    224 	.area INITIALIZER
+                           000000   225 Fmain$__xinit_LED_BLUE$0_0$0 == .
+      000000                        226 __xinit__LED_BLUE:
+      000000 80                     227 	.db #0x80	; 128
+      000001 50 0A                  228 	.dw #0x500a
+                           000003   229 Fmain$__xinit_LED_GREEN$0_0$0 == .
+      000003                        230 __xinit__LED_GREEN:
+      000003 80                     231 	.db #0x80	; 128
+      000004 50 14                  232 	.dw #0x5014
+                                    233 	.area CABS (ABS)

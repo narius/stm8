@@ -1,7 +1,7 @@
 #include <stdint.h>
 
-void set_bit_high(volatile char *reg, unsigned int mapp);
-void set_bit_low(volatile char *reg, unsigned int mapp);
+#define bitset(reg,mask)   (reg |=  mask)
+#define bitclear(reg,mask) (reg &= ~mask)
 
 #define SYSCFG_RMPCR1	(*(volatile uint8_t *)0x509E)
 #define PC_ODR	(*(volatile uint8_t *)0x500a)

@@ -7,66 +7,98 @@ Symbol Table
     .__.ABS.                                                    =  000000 G
     .__.CPU.                                                    =  000000 L
     .__.H$L.                                                    =  000001 L
-  A A$main$107                                                     000000 GR
-  A A$main$113                                                     000003 GR
-  A A$main$116                                                     000006 GR
-  A A$main$118                                                     000007 GR
-  A A$main$119                                                     000009 GR
-  A A$main$120                                                     00000A GR
-  A A$main$122                                                     00000B GR
-  A A$main$123                                                     00000C GR
-  A A$main$124                                                     00000F GR
-  A A$main$125                                                     000011 GR
-  A A$main$131                                                     000014 GR
-  A A$main$135                                                     000017 GR
-  A A$main$137                                                     00001A GR
-  A A$main$143                                                     00001D GR
-  A A$main$147                                                     000020 GR
-  A A$main$149                                                     000023 GR
-  A A$main$157                                                     000026 GR
-  5 A$main$50                                                      000000 GR
-  6 A$main$58                                                      000000 GR
-  6 A$main$59                                                      000003 GR
-  6 A$main$60                                                      000004 GR
-  6 A$main$61                                                      000006 GR
-  6 A$main$64                                                      000009 GR
-  6 A$main$65                                                      00000C GR
-  6 A$main$67                                                      00000E GR
-  6 A$main$68                                                      000012 GR
-  6 A$main$69                                                      000013 GR
-  6 A$main$71                                                      000015 GR
-  6 A$main$72                                                      000018 GR
-  6 A$main$74                                                      00001A GR
-  6 A$main$75                                                      00001D GR
-  6 A$main$76                                                      000020 GR
-  6 A$main$77                                                      000021 GR
-  7 A$main$81                                                      000000 GR
-  5 A$main$88                                                      000004 GR
-  A C$main.c$12$3_0$9                                           =  000003 GR
-  A C$main.c$14$4_0$10                                          =  000014 GR
-  A C$main.c$15$4_0$10                                          =  000017 GR
-  A C$main.c$18$4_0$11                                          =  00001D GR
-  A C$main.c$19$4_0$11                                          =  000020 GR
-  A C$main.c$24$2_0$7                                           =  000026 GR
-  A C$main.c$5$0_0$7                                            =  000000 GR
-  A C$main.c$8$1_0$7                                            =  000000 GR
-  A G$main$0$0                                                  =  000000 GR
-  A XG$main$0$0                                                 =  000026 GR
-    ___sdcc_external_startup                                       ****** GX
-  5 __interrupt_vect                                               000000 R
-  6 __sdcc_init_data                                               000009 R
-  5 __sdcc_program_startup                                         000004 R
-  3 __start__stack                                                 000000 R
-  A _main                                                          000000 GR
+  A A$main$106                                                     000000 GR
+  A A$main$110                                                     000001 GR
+  A A$main$116                                                     000004 GR
+  A A$main$119                                                     000007 GR
+  A A$main$121                                                     000008 GR
+  A A$main$122                                                     00000A GR
+  A A$main$123                                                     00000B GR
+  A A$main$125                                                     00000C GR
+  A A$main$126                                                     00000D GR
+  A A$main$127                                                     000010 GR
+  A A$main$128                                                     000012 GR
+  A A$main$135                                                     000015 GR
+  A A$main$138                                                     000018 GR
+  A A$main$140                                                     00001C GR
+  A A$main$141                                                     00001E GR
+  A A$main$144                                                     000020 GR
+  A A$main$146                                                     000023 GR
+  A A$main$148                                                     000024 GR
+  A A$main$150                                                     000026 GR
+  A A$main$155                                                     000027 GR
+  A A$main$158                                                     00002A GR
+  A A$main$160                                                     00002E GR
+  A A$main$161                                                     000030 GR
+  A A$main$164                                                     000032 GR
+  A A$main$166                                                     000035 GR
+  A A$main$168                                                     000037 GR
+  A A$main$170                                                     000038 GR
+  A A$main$177                                                     00003B GR
+  A A$main$180                                                     00003E GR
+  A A$main$182                                                     000042 GR
+  A A$main$183                                                     000044 GR
+  A A$main$186                                                     000046 GR
+  A A$main$188                                                     000049 GR
+  A A$main$190                                                     00004A GR
+  A A$main$192                                                     00004C GR
+  A A$main$197                                                     00004D GR
+  A A$main$200                                                     000050 GR
+  A A$main$202                                                     000054 GR
+  A A$main$203                                                     000056 GR
+  A A$main$206                                                     000058 GR
+  A A$main$208                                                     00005B GR
+  A A$main$210                                                     00005D GR
+  A A$main$212                                                     00005E GR
+  A A$main$218                                                     000061 GR
+  A A$main$221                                                     000062 GR
+  5 A$main$52                                                      000000 GR
+  6 A$main$60                                                      000000 GR
+  6 A$main$61                                                      000003 GR
+  6 A$main$62                                                      000004 GR
+  6 A$main$63                                                      000006 GR
+  6 A$main$66                                                      000009 GR
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8)  Page 2
 Hexadecimal [24-Bits]
 
 Symbol Table
 
-    _set_blue_high                                                 ****** GX
-    _set_blue_low                                                  ****** GX
-    _set_green_high                                                ****** GX
-    _set_green_low                                                 ****** GX
+  6 A$main$67                                                      00000C GR
+  6 A$main$69                                                      00000E GR
+  6 A$main$70                                                      000012 GR
+  6 A$main$71                                                      000013 GR
+  6 A$main$73                                                      000015 GR
+  6 A$main$74                                                      000018 GR
+  6 A$main$76                                                      00001A GR
+  6 A$main$77                                                      00001D GR
+  6 A$main$78                                                      000020 GR
+  6 A$main$79                                                      000021 GR
+  7 A$main$83                                                      000000 GR
+  5 A$main$90                                                      000004 GR
+  A C$main.c$14$0_0$3                                           =  000000 GR
+  A C$main.c$17$1_0$3                                           =  000001 GR
+  A C$main.c$21$3_0$5                                           =  000004 GR
+  A C$main.c$23$4_0$6                                           =  000015 GR
+  A C$main.c$24$4_0$6                                           =  000027 GR
+  A C$main.c$27$4_0$7                                           =  00003B GR
+  A C$main.c$28$4_0$7                                           =  00004D GR
+  A C$main.c$33$2_0$3                                           =  000062 GR
+  2 Fmain$LED_BLUE$0_0$0                                        =  000000 GR
+  2 Fmain$LED_GREEN$0_0$0                                       =  000003 GR
+  9 Fmain$__xinit_LED_BLUE$0_0$0                                =  000000 GR
+  9 Fmain$__xinit_LED_GREEN$0_0$0                               =  000003 GR
+  A G$main$0$0                                                  =  000000 GR
+  A XG$main$0$0                                                 =  000062 GR
+  2 _LED_BLUE                                                      000000 R
+  2 _LED_GREEN                                                     000003 R
+    ___sdcc_external_startup                                       ****** GX
+  5 __interrupt_vect                                               000000 R
+  6 __sdcc_init_data                                               000009 R
+  5 __sdcc_program_startup                                         000004 R
+  3 __start__stack                                                 000000 R
+  9 __xinit__LED_BLUE                                              000000 R
+  9 __xinit__LED_GREEN                                             000003 R
+  A _main                                                          000000 GR
     _setup_led                                                     ****** GX
     l_DATA                                                         ****** GX
     l_INITIALIZER                                                  ****** GX
@@ -75,6 +107,7 @@ Symbol Table
     s_INITIALIZED                                                  ****** GX
     s_INITIALIZER                                                  ****** GX
 
+
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8)  Page 3
 Hexadecimal [24-Bits]
 
@@ -82,14 +115,14 @@ Area Table
 
    0 _CODE                                      size      0   flags    0
    1 DATA                                       size      0   flags    0
-   2 INITIALIZED                                size      0   flags    0
+   2 INITIALIZED                                size      6   flags    0
    3 SSEG                                       size      1   flags    0
    4 DABS                                       size      0   flags    8
    5 HOME                                       size      7   flags    0
    6 GSINIT                                     size     23   flags    0
    7 GSFINAL                                    size      3   flags    0
    8 CONST                                      size      0   flags    0
-   9 INITIALIZER                                size      0   flags    0
-   A CODE                                       size     27   flags    0
+   9 INITIALIZER                                size      6   flags    0
+   A CODE                                       size     63   flags    0
    B CABS                                       size      0   flags    8
 

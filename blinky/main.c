@@ -1,6 +1,16 @@
 #include <stdint.h>
 //#include "registers.h"
 #include "led.h"
+//#define bitset(reg,mask)   (reg |=  mask)
+//#define bitclear(reg,mask) (reg &= ~mask)
+/*struct struct_LED {
+  uint8_t mask;
+  volatile char* reg;
+};
+*/
+//extern static volatile struct struct_LED LED_BLUE;
+//extern static volatile struct struct_LED LED_GREEN;
+
 void main(void)
 {
 	// Configure pins
@@ -10,10 +20,12 @@ void main(void)
 	{
 		if ((PC2_IDR & 0b00000010) != 0b00000010)
 		{
-			set_bit_low(&LED_GREENP.reg, LED_GREENP.mask);
+			bitclear(*(LED_BLUE.reg), LED_BLUE.mask);
+			bitset(*(LED_GREEN.reg), LED_GREEN.mask);
 		}
 		else{
-			set_bit_high(&LED_GREENP.reg, LED_GREENP.mask);
+			bitclear(*(LED_GREEN.reg), LED_GREEN.mask);
+			bitset(*(LED_BLUE.reg), LED_BLUE.mask);
 		}
 
 
