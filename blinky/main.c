@@ -1,11 +1,14 @@
 #include <stdint.h>
 #include <stdio.h>
-//#include "registers.h"
+#include "registers.h"
 #include "led.h"
 #include "usart.h"
+#include "interrupts.h"
 //HSI selected as system clock source
 // System clock source/1
 #define F_SYSCLOCK 16000000UL
+
+volatile static struct struct_BIT BUTTON_BLUE={(1<<2), &PC_DDR};
 
 void main(void)
 {
@@ -22,25 +25,23 @@ void main(void)
 	bitset(PE_CR1, LED_GREEN.mask);
 	bitclear(*(LED_GREEN.reg), LED_GREEN.mask);
 	uint32_t i;
-	/*for(;;)
-	{
-		*LED_GREEN.reg^=LED_GREEN.mask;
-		for(i=0;i<((F_SYSCLOCK/18000UL)*500);i++){
-			__asm__("nop");
-		}
-	}*/
+	int pressed = 0;
+	printf("Before for loop\n");
+	printf("VREFINT_Factory_CONV: %d\n", VREFINT_Factory_CONV);
+	printf("VREFINT_Factory_CONV_V90: %d\n", VREFINT_Factory_CONV_V90);
+
 	for(;;)
 	{
-		if ((PC2_IDR & 0b00000010) != 0b00000010)
+		if ((PC_IDR & 0b00000010) != 0b00000010)
 		{
+			pressed++;
 			bitclear(*(LED_BLUE.reg), LED_BLUE.mask);
 			//bitset(*(LED_GREEN.reg), LED_GREEN.mask);
-			printf("hej\n");
+			printf("hej %d\n", pressed);
 			for(i = 0; i < 147456; i++); // Sleep
 		}
-		else{
-			//bitclear(*(LED_GREEN.reg), LED_GREEN.mask);
-			bitset(*(LED_BLUE.reg), LED_BLUE.mask);
-		}
+		
 	}
 }
+
+

@@ -2,8 +2,10 @@
 
 #define bitset(reg,mask)   (reg |=  mask)
 #define bitclear(reg,mask) (reg &= ~mask)
+#define PA_ODR	(*(volatile uint8_t *)0x5000)
 
-#define SYSCFG_RMPCR1	(*(volatile uint8_t *)0x509E)
+#define VREFINT_Factory_CONV	(*(volatile uint8_t *)0x4910)
+#define VREFINT_Factory_CONV_V90	(*(volatile uint8_t *)0x4911)
 
 #define PA_ODR	(*(volatile uint8_t *)0x5000)
 #define PA_IDR (*(volatile uint8_t *)0x5001)
@@ -13,7 +15,7 @@
 
 
 #define PC_ODR	(*(volatile uint8_t *)0x500a)
-#define PC2_IDR (*(volatile uint8_t *)0x500b)
+#define PC_IDR (*(volatile uint8_t *)0x500b)
 #define PC_DDR	(*(volatile uint8_t *)0x500c)
 #define PC_CR1	(*(volatile uint8_t *)0x500d)
 #define PC_CR2	(*(volatile uint8_t *)0x500e)
