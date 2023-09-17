@@ -4,6 +4,14 @@
 #define bitclear(reg,mask) (reg &= ~mask)
 
 #define SYSCFG_RMPCR1	(*(volatile uint8_t *)0x509E)
+
+#define PA_ODR	(*(volatile uint8_t *)0x5000)
+#define PA_IDR (*(volatile uint8_t *)0x5001)
+#define PA_DDR	(*(volatile uint8_t *)0x5002)
+#define PA_CR1	(*(volatile uint8_t *)0x5003)
+#define PA_CR2	(*(volatile uint8_t *)0x5004)
+
+
 #define PC_ODR	(*(volatile uint8_t *)0x500a)
 #define PC2_IDR (*(volatile uint8_t *)0x500b)
 #define PC_DDR	(*(volatile uint8_t *)0x500c)
@@ -16,9 +24,14 @@
 #define PE_CR2	(*(volatile uint8_t *)0x5018)
 
 #define CLK_DIVR	(*(volatile uint8_t *)0x50c0)
+#define CLK_SWR	(*(volatile uint8_t *)0x50c8)
+#define CLK_SCSR	(*(volatile uint8_t *)0x50c7)
+#define CLK_PCKENR1	(*(volatile uint8_t *)0x50c3)
 #define CLK_PCKENR2	(*(volatile uint8_t *)0x50c4)
 
 #define TIM1_CR1	(*(volatile uint8_t *)0x52b0)
+#define TIM1_CR2	(*(volatile uint8_t *)0x52b1)
+#define TIM1_SMCR   (*(volatile uint8_t *)0x52b2)
 #define TIM1_PCNTRH	(*(volatile uint8_t *)0x52bf)
 #define TIM1_PCNTRL	(*(volatile uint8_t *)0x52c0)
 #define TIM1_PSCRH	(*(volatile uint8_t *)0x52c1)
@@ -70,3 +83,15 @@
 #define LCD_RAM11	(*(volatile uint8_t *)0x5417)
 #define LCD_RAM12	(*(volatile uint8_t *)0x5418)
 #define LCD_RAM13	(*(volatile uint8_t *)0x5419)
+
+#define USART1_SR	(*(volatile uint8_t *)0x5230)
+#define USART1_DR	(*(volatile uint8_t *)0x5231)
+#define USART1_BRR1	(*(volatile uint8_t *)0x5232)
+#define USART1_BRR2	(*(volatile uint8_t *)0x5233)
+#define USART1_CR1	(*(volatile uint8_t *)0x5234)
+#define USART1_CR2	(*(volatile uint8_t *)0x5235)
+#define USART1_CR3	(*(volatile uint8_t *)0x5236)
+#define USART1_CR4	(*(volatile uint8_t *)0x5237)
+#define USART1_CR5	(*(volatile uint8_t *)0x5238)
+#define USART1_GTR	(*(volatile uint8_t *)0x5239)
+#define USART1_PSCR	(*(volatile uint8_t *)0x523A)
