@@ -2,6 +2,10 @@
     "files.associations": {
         "stdint.h": "c",
         "led.h": "c",
-        "registers.h": "c"
+        "registers.h": "c",
+        "usart.h": "c",
+        "stm8s.h": "c",
+        "stdio.h": "c",
+        "interrupts.h": "c"
     }
 }

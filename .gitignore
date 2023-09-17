@@ -1,2 +1,4 @@
 
 */build/*
+STM8LDISCOVERY/src/interrupts.c
+.vscode/settings.json

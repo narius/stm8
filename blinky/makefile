@@ -46,6 +46,7 @@ compile:
 	$(OUTPUT_DIR)/lcd.rel \
 	$(OUTPUT_DIR)/registers.rel \
 	$(OUTPUT_DIR)/usart.rel \
+	$(OUTPUT_DIR)/interrupts.rel \
 	
 
 compile_obj:
@@ -54,6 +55,7 @@ compile_obj:
 	$(SDCC) $(CFLAGS) $(INCLUDEPATH) -D $(DEVICE) -o $(OUTPUT_DIR)/ -c --verbose $(STM8LDISCOVERY)/src/lcd.c
 	$(SDCC) $(CFLAGS) $(INCLUDEPATH) -D $(DEVICE) -o $(OUTPUT_DIR)/ -c --verbose $(STM8LDISCOVERY)/src/registers.c
 	$(SDCC) $(CFLAGS) $(INCLUDEPATH) -D $(DEVICE) -o $(OUTPUT_DIR)/ -c --verbose $(STM8LDISCOVERY)/src/usart.c
+	$(SDCC) $(CFLAGS) $(INCLUDEPATH) -D $(DEVICE) -o $(OUTPUT_DIR)/ -c --verbose $(STM8LDISCOVERY)/src/interrupts.c
 
 clean:
 	rm -Rrf $(OUTPUT_DIR)
